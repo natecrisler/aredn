@@ -110,7 +110,7 @@ commands:
           no_output_timeout: 2h
 
   build_x86:
-    description: "BUild x86/64"
+    description: "Build x86/64"
     steps:
       - run:
           name: Build x64/64
