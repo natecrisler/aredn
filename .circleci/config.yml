@@ -101,6 +101,14 @@ commands:
           command: make MAINTARGET=ipq40xx SUBTARGET=mikrotik
           no_output_timeout: 2h
 
+  build_ipq806x:
+    description: "Build ipq806x/generic"
+    steps:
+      - run:
+          name: Build ipq806x/generic
+          command: make MAINTARGET=ipq806x SUBTARGET=generic
+          no_output_timeout: 2h
+
   build_x86:
     description: "BUild x86/64"
     steps:
@@ -245,6 +253,20 @@ jobs:
           paths:
             - openwrt/bin/targets/ipq40xx
             - openwrt/bin/packages/arm_cortex-a7_neon-vfpv4
+
+  build_job_ipq806x:
+    resource_class: xlarge
+    docker:
+      - image: arednmesh/builder
+    steps:
+      - attach_workspace:
+          at: /home/aredn/project
+      - build_ipq806x
+      - persist_to_workspace:
+          root: /home/aredn/project
+          paths:
+            - openwrt/bin/targets/ipq806x
+            - openwrt/bin/packages/arm_cortex-a15_neon-vfpv4
 
   build_job_x86:
     resource_class: xlarge
@@ -558,6 +580,9 @@ workflows:
       - build_job_ipq40xx:
           requires:
             - build_nightly_prepare
+      - build_job_ipq806x:
+          requires:
+            - build_nightly_prepare
       - build_job_x86:
           requires:
             - build_nightly_prepare
@@ -571,6 +596,7 @@ workflows:
           requires:
             - build_job_ath79
             - build_job_ipq40xx
+            - build_job_ipq806x
             - build_job_x86
             - build_job_ramips_and_morse
             - build_job_mediatek
@@ -607,6 +633,9 @@ workflows:
       - build_job_ipq40xx:
           requires:
             - build_babel_prepare
+      - build_job_ipq806x:
+          requires:
+            - build_babel_prepare
       - build_job_x86:
           requires:
             - build_babel_prepare
@@ -620,6 +649,7 @@ workflows:
           requires:
             - build_job_ath79
             - build_job_ipq40xx
+            - build_job_ipq806x
             - build_job_x86
             - build_job_ramips_and_morse
             - build_job_mediatek
@@ -647,6 +677,9 @@ workflows:
       - build_job_ipq40xx:
           requires:
             - build_release_prepare
+      - build_job_ipq806x:
+          requires:
+            - build_release_prepare
       - build_job_x86:
           requires:
             - build_release_prepare
@@ -660,6 +693,7 @@ workflows:
           requires:
             - build_job_ath79
             - build_job_ipq40xx
+            - build_job_ipq806x
             - build_job_x86
             - build_job_ramips_and_morse
             - build_job_mediatek
