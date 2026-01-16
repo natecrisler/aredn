@@ -149,6 +149,11 @@ Microuter | GL-USB150 | 2 | ath79 | generic | glinet_gl-usb150 | 64MB | stable |
 Creta | GL-AR750 | 2 | ath79 | generic | glinet_gl-ar750 | 128MB | stable | sunset (3)
 Slate | GL-AR750S-Ext | 2 | ath79 | nand | gl-ar750s | 128MB | untested | sunset (3)
 
+## Netgear
+Model | SKUs | Band | Target | Subtarget | Image | RAM | Stability | Status
+:------ | :----: | :----: | :------: | :---------: | :-----: | :---: | :---------: | :------
+Nighthawk X4S | R7800 | 2 & 5 | ipq806x | generic | netgear_r7800 | 512MB | untested | nightly
+
 ## OpenWRT
 Model | SKUs | Band | Target | Subtarget | Image | RAM | Stability | Status
 :------ | :----: | :----: | :------: | :---------: | :-----: | :---: | :---------: | :------

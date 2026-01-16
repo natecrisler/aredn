@@ -1,0 +1,13 @@
+--- a/target/linux/ipq806x/base-files/etc/board.d/02_network
++++ b/target/linux/ipq806x/base-files/etc/board.d/02_network
+@@ -35,7 +35,9 @@
+ 	edgecore,ecw5410|\
+ 	nec,wg2600hp3|\
+ 	netgear,r7800)
+-		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3 lan4" "wan"
++		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" "wan"
++		ucidef_set_interface "dtdlink" device "lan4.2" protocol "static"
++		ucidef_set_interface "wifi" device "wlan0" protocol "static"
+ 		;;
+ 	compex,wpq864|\
+ 	netgear,d7800|\

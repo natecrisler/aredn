@@ -1288,6 +1288,25 @@
     },
     "features": [ "supernode", "videoproxy", "xlink" ]
   },
+  "netgear r7800": {
+    "wlan0": {
+      "maxpower": 23,
+      "antenna": {
+        "description": "Internal antennas",
+        "gain": 3,
+        "beamwidth": 360
+      }
+    },
+    "wlan1": {
+      "maxpower": 27,
+      "antenna": {
+        "description": "Internal antennas",
+        "gain": 3,
+        "beamwidth": 360
+      }
+    },
+    "features": [ "supernode", "xlink" ]
+  },
   "morsemicro halowlink 1": {
     "name": "MorseMicro HaLowLink 1",
     "wlan0": {
